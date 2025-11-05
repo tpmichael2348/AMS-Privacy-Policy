@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMS - 隱私權政策</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .section ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #333;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px 40px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔒 隱私權政策</h1>
+            <p>我們重視並保護您的隱私</p>
+        </div>
+
+        <div class="content">
+            <a href="index.html" class="back-link">← 返回支援頁面</a>
+
+            <div class="highlight-box">
+                <p><strong>最後更新日期：2025 年 11 月 2 日</strong></p>
+                <p>感謝您使用 AMS 資產管理系統。本隱私權政策說明我們如何處理您的資訊。</p>
+            </div>
+
+            <div class="section">
+                <h2>1. 資料收集與使用</h2>
+
+                <h3>1.1 我們收集的資訊</h3>
+                <p>AMS 是一款<strong>主要在本地運作</strong>的應用程式。我們<strong>不會收集、傳輸或儲存</strong>您的任何個人資料到我們的伺服器。您在應用程式中輸入的所有資訊，包括但不限於：</p>
+                <ul>
+                    <li>資產資料（金額、類型、名稱等）</li>
+                    <li>投資組合資訊</li>
+                    <li>財務目標設定</li>
+                    <li>個人備註</li>
+                </ul>
+                <p>這些資料<strong>僅儲存在您的 iOS 裝置本地</strong>，使用 Apple 的 Core Data 框架進行安全儲存。</p>
+
+                <h3>1.2 資料的使用目的</h3>
+                <p>您輸入的資料僅用於以下目的：</p>
+                <ul>
+                    <li>在應用程式內顯示您的資產資訊</li>
+                    <li>生成財務報表和圖表</li>
+                    <li>計算淨資產、投資損益等統計數據</li>
+                    <li>提供個人化的財務分析功能</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>2. 網路連線使用</h2>
+                <p>雖然 AMS 主要是離線應用，但以下功能需要網路連線來提供即時資訊：</p>
+
+                <h3>2.1 股票價格更新</h3>
+                <p>當您使用「更新股價」功能時，應用程式會向第三方股票報價服務發送請求以獲取最新股價。這些請求中<strong>僅包含股票代碼</strong>，不包含您的個人資訊或資產數量。</p>
+                <p>我們使用的股票報價服務：</p>
+                <ul>
+                    <li>Finnhub API（用於美股報價）- 需要 API 金鑰</li>
+                    <li>Yahoo Finance API（用於台股報價）- 免費公開 API</li>
+                </ul>
+
+                <h3>2.2 匯率更新</h3>
+                <p>為了計算美股資產的台幣價值，應用程式需要取得最新的美元對台幣匯率。此功能：</p>
+                <ul>
+                    <li>僅在您主動更新匯率時使用網路</li>
+                    <li>不會自動在背景連線</li>
+                    <li>不會傳送任何個人資料</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>重要說明：</strong></p>
+                    <ul>
+                        <li>這些網路請求<strong>僅包含股票代碼或貨幣代碼</strong>，不包含任何個人資料</li>
+                        <li>您可以選擇<strong>完全不使用</strong>這些功能，手動輸入股價和匯率</li>
+                        <li>所有其他功能（記錄資產、查看報表、成就系統等）都<strong>完全離線運作</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>3. 資料安全</h2>
+
+                <h3>3.1 本地儲存</h3>
+                <p>您的所有資料都儲存在 iOS 裝置的安全沙盒環境中，其他應用程式無法訪問。</p>
+
+                <h3>3.2 生物辨識鎖定</h3>
+                <p>應用程式提供 Face ID / Touch ID 鎖定功能，您可以在設定中啟用此功能以增強隱私保護。生物辨識資料由 iOS 系統管理，我們無法存取您的生物辨識資訊。</p>
+
+                <h3>3.3 備份與 iCloud</h3>
+                <p>如果您啟用了 iOS 的自動備份功能（iTunes 或 iCloud 備份），您的應用程式資料可能會被包含在備份中。這些備份由 Apple 管理，受到 Apple 隱私政策的保護。</p>
+            </div>
+
+            <div class="section">
+                <h2>4. 資料分享</h2>
+                <p>我們<strong>絕不會</strong>向任何第三方出售、交易或以其他方式轉移您的個人資料。您的資料完全屬於您，並且只存在於您的裝置上。</p>
+            </div>
+
+            <div class="section">
+                <h2>5. 匯出與刪除資料</h2>
+
+                <h3>5.1 資料匯出</h3>
+                <p>您可以隨時透過應用程式的「設定」→「匯出資料」功能，將您的資料匯出為 Excel 檔案。</p>
+
+                <h3>5.2 資料刪除</h3>
+                <p>您可以隨時在應用程式內刪除個別資產記錄。如果您想完全刪除所有資料，可以直接刪除應用程式，所有本地資料將被永久移除。</p>
+            </div>
+
+            <div class="section">
+                <h2>6. 未成年人隱私</h2>
+                <p>本應用程式適用於所有年齡層。由於我們不收集任何個人資訊，因此不存在未成年人資料保護的相關問題。</p>
+            </div>
+
+            <div class="section">
+                <h2>7. 第三方服務</h2>
+                <p>除了股票報價服務外，本應用程式不使用任何其他第三方服務或 SDK。我們不使用：</p>
+                <ul>
+                    <li>分析工具（如 Google Analytics）</li>
+                    <li>廣告服務</li>
+                    <li>社交媒體整合</li>
+                    <li>追蹤服務</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>8. Cookies 與追蹤技術</h2>
+                <p>本應用程式不使用 cookies 或任何追蹤技術。</p>
+            </div>
+
+            <div class="section">
+                <h2>9. 政策變更</h2>
+                <p>如果我們對此隱私權政策進行任何重大變更，我們將在應用程式更新說明中通知您，並在此頁面更新修訂日期。我們建議您定期查看本政策以了解我們如何保護您的資訊。</p>
+            </div>
+
+            <div class="section">
+                <h2>10. 聯絡我們</h2>
+                <p>如果您對本隱私權政策有任何疑問或建議，歡迎透過以下方式聯繫我們：</p>
+                <ul>
+                    <li>📧 Email: <a href="mailto:michaelchangpop@gmail.com" style="color: #667eea;">michaelchangpop@gmail.com</a></li>
+                    <li>💬 GitHub: <a href="https://github.com/tpmichael2348/AMS-IOS/issues" style="color: #667eea;" target="_blank">提交問題</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>11. 您的權利</h2>
+                <p>作為應用程式使用者，您擁有以下權利：</p>
+                <ul>
+                    <li><strong>存取權</strong>：您可以隨時在應用程式內查看您的所有資料</li>
+                    <li><strong>修改權</strong>：您可以隨時修改或更新您的資料</li>
+                    <li><strong>刪除權</strong>：您可以隨時刪除個別記錄或整個應用程式</li>
+                    <li><strong>匯出權</strong>：您可以將資料匯出為可攜式格式（Excel）</li>
+                    <li><strong>停止使用權</strong>：您可以隨時停止使用本應用程式</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <p><strong>簡而言之：</strong>您的財務資料完全屬於您，儲存在您的裝置上，我們無法存取，也絕不會收集或分享。僅在更新股價和匯率時需要網路連線，且不會傳送任何個人資料。</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 AMS - Asset Management System. All rights reserved.</p>
+            <p><a href="index.html" style="color: #667eea; text-decoration: none;">返回支援頁面</a></p>
+        </div>
+    </div>
+</body>
+</html>
