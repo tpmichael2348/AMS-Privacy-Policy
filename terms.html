@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用條款 - DoremiAMS</title>
+    <style>
+        :root {
+            --primary-gradient-start: #66B3FF;
+            --primary-gradient-end: #1A3380;
+            --primary-color: #3373bf;
+            --primary-light: #e8f4ff;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: shimmer 15s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .hero .app-name {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .hero .update-date {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: var(--primary-light);
+        }
+
+        .card h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+        }
+
+        .card ul, .card ol {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .card ul li, .card ol li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .card ul li:last-child, .card ol li:last-child {
+            border-bottom: none;
+        }
+
+        .card ul li::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 18px;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .card ol {
+            counter-reset: item;
+        }
+
+        .card ol li::before {
+            content: counter(item);
+            counter-increment: item;
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-light);
+            color: var(--primary-color);
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card ul li strong, .card ol li strong {
+            color: var(--text-primary);
+        }
+
+        .highlight-box {
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin: 18px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .highlight-box.warning {
+            background: #fef9e7;
+            border-left-color: #f59e0b;
+        }
+
+        .highlight-box.success {
+            background: #ecfdf5;
+            border-left-color: #10b981;
+        }
+
+        .highlight-box strong {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .highlight-box ul {
+            margin-top: 12px;
+        }
+
+        .subscription-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .subscription-table th,
+        .subscription-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .subscription-table th {
+            background: var(--primary-light);
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .subscription-table td {
+            background: white;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .subscription-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            background: #dbeafe;
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .badge.recommended {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+
+        footer .thanks {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        footer .thanks .app-name {
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        footer .tagline {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        footer .links {
+            margin-top: 16px;
+        }
+
+        footer .links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.9rem;
+        }
+
+        footer .links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 24px 16px;
+            }
+
+            .card {
+                padding: 22px 18px;
+            }
+
+            .subscription-table th,
+            .subscription-table td {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">📜</div>
+            <h1>使用條款</h1>
+            <p class="app-name">DoremiAMS 資產管理系統</p>
+            <p class="update-date">最後更新：2025 年 11 月 27 日</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 服務說明 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📱</div>
+                <h2>1. 服務說明</h2>
+            </div>
+            <p>DoremiAMS（以下簡稱「本應用程式」）是一款個人資產管理工具，提供以下功能：</p>
+            <ul>
+                <li>記錄並追蹤您的各類資產（現金、股票、基金、房產等）</li>
+                <li>自動更新台股及國際股票收盤價</li>
+                <li>匯率換算與外幣資產管理</li>
+                <li>資產配置分析與再平衡建議</li>
+                <li>資料匯入/匯出功能</li>
+            </ul>
+        </div>
+
+        <!-- 使用者責任 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">👤</div>
+                <h2>2. 使用者責任</h2>
+            </div>
+            <p>使用本應用程式時，您同意：</p>
+            <ul>
+                <li>您輸入的資產資料均為您個人所有，由您自行負責其正確性</li>
+                <li>本應用程式僅供個人財務管理參考，不構成任何投資建議</li>
+                <li>任何投資決策應由您自行評估風險並承擔責任</li>
+                <li>不得將本應用程式用於任何非法用途</li>
+            </ul>
+        </div>
+
+        <!-- 訂閱服務 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">👑</div>
+                <h2>3. Premium 訂閱服務</h2>
+            </div>
+            <p>DoremiAMS 提供 Premium 訂閱服務，解鎖進階功能：</p>
+
+            <div class="highlight-box success">
+                <strong>Premium 功能包含</strong>
+                <ul>
+                    <li><strong>國際市場價格自動更新</strong>：支援美股、英股、加密貨幣等 10+ 個主要市場</li>
+                    <li><strong>完全無廣告</strong>：移除所有廣告干擾，享受純淨使用體驗</li>
+                </ul>
+            </div>
+
+            <h3 style="font-size: 1rem; margin: 20px 0 12px; color: var(--text-primary);">訂閱方案</h3>
+            <table class="subscription-table">
+                <tr>
+                    <th>方案</th>
+                    <th>價格</th>
+                    <th>免費試用</th>
+                </tr>
+                <tr>
+                    <td>月訂閱</td>
+                    <td>NT$60 / 月</td>
+                    <td>14 天</td>
+                </tr>
+                <tr>
+                    <td>年訂閱 <span class="badge recommended">推薦</span></td>
+                    <td>NT$590 / 年（約 NT$49/月）</td>
+                    <td>14 天</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 訂閱條款 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">💳</div>
+                <h2>4. 訂閱條款</h2>
+            </div>
+            <div class="highlight-box warning">
+                <strong>重要說明：請在訂閱前仔細閱讀</strong>
+            </div>
+            <ol>
+                <li><strong>付款方式</strong>：付款將於確認購買時向您的 Apple ID 帳戶收取</li>
+                <li><strong>自動續訂</strong>：訂閱將自動續訂，除非在當前訂閱期結束前至少 24 小時關閉自動續訂</li>
+                <li><strong>續訂扣款</strong>：帳戶將在當前訂閱期結束前 24 小時內收取續訂費用</li>
+                <li><strong>免費試用</strong>：首次訂閱可享 14 天免費試用。試用期間取消不會收取任何費用</li>
+                <li><strong>管理訂閱</strong>：購買後可在 iOS「設定 > Apple ID > 訂閱項目」中管理及取消訂閱</li>
+                <li><strong>取消政策</strong>：取消訂閱後，您仍可使用 Premium 功能直到當前訂閱期結束</li>
+            </ol>
+        </div>
+
+        <!-- 恢復購買 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🔄</div>
+                <h2>5. 恢復購買</h2>
+            </div>
+            <p>如果您曾經訂閱過 Premium，可以透過以下方式恢復您的訂閱：</p>
+            <ol>
+                <li>開啟 DoremiAMS App</li>
+                <li>前往「設定」>「升級 Premium」</li>
+                <li>點擊頁面底部的「恢復購買」按鈕</li>
+                <li>使用您原先購買時的 Apple ID 進行驗證</li>
+            </ol>
+            <div class="highlight-box">
+                <strong>提示</strong>：恢復購買功能適用於更換裝置、重新安裝 App 或使用家人共享的情況。
+            </div>
+        </div>
+
+        <!-- 免責聲明 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">⚠️</div>
+                <h2>6. 免責聲明</h2>
+            </div>
+            <ul>
+                <li>本應用程式提供的股價、匯率等資訊僅供參考，可能存在延遲或誤差</li>
+                <li>我們不保證資料的即時性、準確性或完整性</li>
+                <li>本應用程式不構成任何投資建議，投資決策風險由使用者自行承擔</li>
+                <li>因使用本應用程式產生的任何損失，開發者不承擔責任</li>
+            </ul>
+        </div>
+
+        <!-- 智慧財產權 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">©️</div>
+                <h2>7. 智慧財產權</h2>
+            </div>
+            <p>本應用程式的所有內容（包括但不限於程式碼、設計、圖示、文字）均受智慧財產權法保護。未經授權，不得複製、修改或散布本應用程式的任何部分。</p>
+        </div>
+
+        <!-- 條款修改 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📝</div>
+                <h2>8. 條款修改</h2>
+            </div>
+            <p>我們保留隨時修改本使用條款的權利。重大變更時，我們會在 App 中通知您。繼續使用本應用程式即表示您同意最新的使用條款。</p>
+        </div>
+
+        <!-- 聯絡我們 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📧</div>
+                <h2>9. 聯絡我們</h2>
+            </div>
+            <p>如果您對本使用條款有任何疑問，歡迎透過 App Store 的開發者聯絡方式與我們聯繫。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p class="thanks">感謝您使用 <span class="app-name">DoremiAMS</span></p>
+        <p class="tagline">讓資產管理更簡單、更安心。</p>
+        <div class="links">
+            <a href="privacy.html">隱私權政策</a>
+        </div>
+        <p class="copyright">© 2025 DoremiAMS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

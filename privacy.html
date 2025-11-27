@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DoremiAMS - 隱私權政策</title>
+    <title>隱私權政策 - DoremiAMS</title>
     <style>
+        :root {
+            --primary-gradient-start: #66B3FF;
+            --primary-gradient-end: #1A3380;
+            --primary-color: #3373bf;
+            --primary-light: #e8f4ff;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,265 +25,435 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        .hero {
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
             overflow: hidden;
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 50px 40px;
-            text-align: center;
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: shimmer 15s infinite linear;
         }
 
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
             font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        .header p {
-            font-size: 1em;
-            opacity: 0.95;
+        .hero .app-name {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
         }
 
-        .content {
-            padding: 50px 40px;
+        .hero .update-date {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.15);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
         }
 
-        .section {
-            margin-bottom: 35px;
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .section h2 {
-            color: #667eea;
-            font-size: 1.6em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
         }
 
-        .section h3 {
-            color: #764ba2;
-            font-size: 1.3em;
-            margin: 25px 0 15px 0;
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
         }
 
-        .section p {
-            margin-bottom: 15px;
-            font-size: 1.05em;
+        .card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: var(--primary-light);
         }
 
-        .section ul {
-            margin-left: 30px;
-            margin-bottom: 20px;
+        .card h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
-        .section li {
-            margin-bottom: 12px;
-            font-size: 1.05em;
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .card ul li::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 18px;
+            width: 6px;
+            height: 6px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .card ul li strong {
+            color: var(--text-primary);
         }
 
         .highlight-box {
-            background: #f0f4ff;
-            border-left: 4px solid #667eea;
-            padding: 20px 25px;
-            margin: 25px 0;
-            border-radius: 8px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin: 18px 0;
+            border-left: 4px solid var(--primary-color);
         }
 
-        .highlight-box p {
-            margin: 0;
-            color: #333;
+        .highlight-box.warning {
+            background: #fef9e7;
+            border-left-color: #f59e0b;
         }
 
-        .back-link {
-            display: inline-block;
-            color: #667eea;
-            text-decoration: none;
+        .highlight-box.danger {
+            background: #fef2f2;
+            border-left-color: #ef4444;
+        }
+
+        .highlight-box strong {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .highlight-box ul {
+            margin-top: 12px;
+        }
+
+        .permission-item {
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin: 14px 0;
+        }
+
+        .permission-item h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 1.1em;
+            color: var(--text-primary);
         }
 
-        .back-link:hover {
-            text-decoration: underline;
+        .permission-item h4 .badge {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            background: #d1fae5;
+            color: #059669;
+            border-radius: 20px;
+            font-weight: 500;
         }
 
-        .footer {
-            background: #f8f9fa;
-            padding: 30px 40px;
+        .permission-item p {
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        footer {
             text-align: center;
-            color: #666;
-            border-top: 1px solid #e0e0e0;
+            padding: 40px 20px;
+            background: white;
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
         }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
+        footer .thanks {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        footer .thanks .app-name {
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        footer .tagline {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer .copyright {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 50px 20px;
             }
 
-            .content {
-                padding: 30px 25px;
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 24px 16px;
+            }
+
+            .card {
+                padding: 22px 18px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">🔒</div>
             <h1>隱私權政策</h1>
-            <p>我們重視並保護您的隱私</p>
-        </div>
-
-        <div class="content">
-            <a href="index.html" class="back-link">← 返回支援頁面</a>
-
-            <div class="highlight-box">
-                <p><strong>最後更新日期：2025 年 11 月 2 日</strong></p>
-                <p>感謝您使用 DoremiAMS 資產管理系統。本隱私權政策說明我們如何處理您的資訊。</p>
-            </div>
-
-            <div class="section">
-                <h2>1. 資料收集與使用</h2>
-
-                <h3>1.1 我們收集的資訊</h3>
-                <p>DoremiAMS 是一款<strong>主要在本地運作</strong>的應用程式。我們<strong>不會收集、傳輸或儲存</strong>您的任何個人資料到我們的伺服器。您在應用程式中輸入的所有資訊，包括但不限於：</p>
-                <ul>
-                    <li>資產資料（金額、類型、名稱等）</li>
-                    <li>投資組合資訊</li>
-                    <li>財務目標設定</li>
-                    <li>個人備註</li>
-                </ul>
-                <p>這些資料<strong>僅儲存在您的 iOS 裝置本地</strong>，使用 Apple 的 Core Data 框架進行安全儲存。</p>
-
-                <h3>1.2 資料的使用目的</h3>
-                <p>您輸入的資料僅用於以下目的：</p>
-                <ul>
-                    <li>在應用程式內顯示您的資產資訊</li>
-                    <li>生成財務報表和圖表</li>
-                    <li>計算淨資產、投資損益等統計數據</li>
-                    <li>提供個人化的財務分析功能</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>2. 網路連線使用</h2>
-                <p>雖然 DoremiAMS 主要是離線應用，但以下功能需要網路連線來提供即時資訊：</p>
-
-                <h3>2.1 股票價格更新</h3>
-                <p>當您使用「更新股價」功能時，應用程式會向第三方股票報價服務發送請求以獲取最新股價。這些請求中<strong>僅包含股票代碼</strong>，不包含您的個人資訊或資產數量。</p>
-                <p>我們使用的股票報價服務：</p>
-                <ul>
-                    <li>Finnhub API（用於美股報價）- 需要 API 金鑰</li>
-                    <li>Yahoo Finance API（用於台股報價）- 免費公開 API</li>
-                </ul>
-
-                <h3>2.2 匯率更新</h3>
-                <p>為了計算美股資產的台幣價值，應用程式需要取得最新的美元對台幣匯率。此功能：</p>
-                <ul>
-                    <li>僅在您主動更新匯率時使用網路</li>
-                    <li>不會自動在背景連線</li>
-                    <li>不會傳送任何個人資料</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <p><strong>重要說明：</strong></p>
-                    <ul>
-                        <li>這些網路請求<strong>僅包含股票代碼或貨幣代碼</strong>，不包含任何個人資料</li>
-                        <li>您可以選擇<strong>完全不使用</strong>這些功能，手動輸入股價和匯率</li>
-                        <li>所有其他功能（記錄資產、查看報表、成就系統等）都<strong>完全離線運作</strong></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>3. 資料安全</h2>
-
-                <h3>3.1 本地儲存</h3>
-                <p>您的所有資料都儲存在 iOS 裝置的安全沙盒環境中，其他應用程式無法訪問。</p>
-
-                <h3>3.2 生物辨識鎖定</h3>
-                <p>應用程式提供 Face ID / Touch ID 鎖定功能，您可以在設定中啟用此功能以增強隱私保護。生物辨識資料由 iOS 系統管理，我們無法存取您的生物辨識資訊。</p>
-
-                <h3>3.3 備份與 iCloud</h3>
-                <p>如果您啟用了 iOS 的自動備份功能（iTunes 或 iCloud 備份），您的應用程式資料可能會被包含在備份中。這些備份由 Apple 管理，受到 Apple 隱私政策的保護。</p>
-            </div>
-
-            <div class="section">
-                <h2>4. 資料分享</h2>
-                <p>我們<strong>絕不會</strong>向任何第三方出售、交易或以其他方式轉移您的個人資料。您的資料完全屬於您，並且只存在於您的裝置上。</p>
-            </div>
-
-            <div class="section">
-                <h2>5. 匯出與刪除資料</h2>
-
-                <h3>5.1 資料匯出</h3>
-                <p>您可以隨時透過應用程式的「設定」→「匯出資料」功能，將您的資料匯出為 Excel 檔案。</p>
-
-                <h3>5.2 資料刪除</h3>
-                <p>您可以隨時在應用程式內刪除個別資產記錄。如果您想完全刪除所有資料，可以直接刪除應用程式，所有本地資料將被永久移除。</p>
-            </div>
-
-            <div class="section">
-                <h2>6. 未成年人隱私</h2>
-                <p>本應用程式適用於所有年齡層。由於我們不收集任何個人資訊，因此不存在未成年人資料保護的相關問題。</p>
-            </div>
-
-            <div class="section">
-                <h2>7. 第三方服務</h2>
-                <p>除了股票報價服務外，本應用程式不使用任何其他第三方服務或 SDK。我們不使用：</p>
-                <ul>
-                    <li>分析工具（如 Google Analytics）</li>
-                    <li>廣告服務</li>
-                    <li>社交媒體整合</li>
-                    <li>追蹤服務</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>8. Cookies 與追蹤技術</h2>
-                <p>本應用程式不使用 cookies 或任何追蹤技術。</p>
-            </div>
-
-            <div class="section">
-                <h2>9. 政策變更</h2>
-                <p>如果我們對此隱私權政策進行任何重大變更，我們將在應用程式更新說明中通知您，並在此頁面更新修訂日期。我們建議您定期查看本政策以了解我們如何保護您的資訊。</p>
-            </div>
-
-            <div class="section">
-                <h2>10. 您的權利</h2>
-                <p>作為應用程式使用者，您擁有以下權利：</p>
-                <ul>
-                    <li><strong>存取權</strong>：您可以隨時在應用程式內查看您的所有資料</li>
-                    <li><strong>修改權</strong>：您可以隨時修改或更新您的資料</li>
-                    <li><strong>刪除權</strong>：您可以隨時刪除個別記錄或整個應用程式</li>
-                    <li><strong>匯出權</strong>：您可以將資料匯出為可攜式格式（Excel）</li>
-                    <li><strong>停止使用權</strong>：您可以隨時停止使用本應用程式</li>
-                </ul>
-            </div>
-
-            <div class="highlight-box">
-                <p><strong>簡而言之：</strong>您的財務資料完全屬於您，儲存在您的裝置上，我們無法存取，也絕不會收集或分享。僅在更新股價和匯率時需要網路連線，且不會傳送任何個人資料。</p>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>© 2025 DoremiAMS - Asset Management System. All rights reserved.</p>
-            <p><a href="index.html" style="color: #667eea; text-decoration: none;">返回支援頁面</a></p>
+            <p class="app-name">DoremiAMS 資產管理系統</p>
+            <p class="update-date">最後更新：2025 年 11 月 27 日</p>
         </div>
     </div>
+
+    <div class="container">
+        <!-- 關於本政策 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">ℹ️</div>
+                <h2>關於本政策</h2>
+            </div>
+            <p>DoremiAMS（資產管理系統）重視您的隱私權。本隱私權政策說明我們如何處理您的個人資料與資訊。</p>
+        </div>
+
+        <!-- 資料收集 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📥</div>
+                <h2>1. 我們收集什麼資料？</h2>
+            </div>
+            <div class="highlight-box">
+                <strong>DoremiAMS 主要是一個離線的應用程式</strong>
+            </div>
+            <ul>
+                <li>您在 DoremiAMS 中輸入的所有資料（包括資產記錄、快照等）都<strong>僅儲存在您的裝置本地</strong></li>
+                <li>我們<strong>不會收集、傳輸或儲存</strong>您的任何個人資料到遠端伺服器</li>
+                <li>我們<strong>不使用任何分析工具或追蹤技術</strong></li>
+                <li>您的資料完全由您自己掌控</li>
+            </ul>
+        </div>
+
+        <!-- 權限使用 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🛡️</div>
+                <h2>2. 我們使用哪些權限？</h2>
+            </div>
+
+            <div class="permission-item">
+                <h4>
+                    Face ID / Touch ID
+                    <span class="badge">可選</span>
+                </h4>
+                <p>用於保護您的資產資料安全。啟用後，每次開啟 App 需要驗證身分。此功能完全在您的裝置本地執行，生物辨識資料不會離開您的裝置。</p>
+            </div>
+
+            <div class="permission-item">
+                <h4>
+                    推送通知
+                    <span class="badge">可選</span>
+                </h4>
+                <p>用於在您設定的時間提醒您記錄資產快照。這些是本地通知，不需要網路連線。</p>
+            </div>
+
+            <div class="permission-item">
+                <h4>
+                    檔案存取
+                    <span class="badge">可選</span>
+                </h4>
+                <p>用於匯入和匯出您的資產資料（Excel 格式）。僅在您主動使用匯入/匯出功能時才會存取檔案。</p>
+            </div>
+        </div>
+
+        <!-- 網路連線 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🌐</div>
+                <h2>3. 哪些功能需要網路連線？</h2>
+            </div>
+            <p>雖然 DoremiAMS 主要是離線應用，但以下功能需要網路連線：</p>
+
+            <div class="permission-item">
+                <h4>股價更新</h4>
+                <p>取得台股及國際股票收盤價。僅傳送股票代碼，不包含任何個人資料。</p>
+            </div>
+
+            <div class="permission-item">
+                <h4>匯率更新</h4>
+                <p>取得主要貨幣對台幣的匯率，用於計算外幣資產的台幣價值。</p>
+            </div>
+
+            <div class="permission-item">
+                <h4>廣告服務</h4>
+                <p>免費版用戶會看到 Google AdMob 廣告。Premium 訂閱用戶可完全移除廣告。</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>重要說明</strong>
+                <ul>
+                    <li>網路請求<strong>僅包含股票代碼或貨幣代碼</strong>，不含個人資料</li>
+                    <li>您可選擇<strong>完全不使用</strong>這些功能，手動輸入資料</li>
+                    <li>記錄資產、查看報表等功能<strong>完全離線運作</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 資料儲存 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">💾</div>
+                <h2>4. 資料如何儲存？</h2>
+            </div>
+            <ul>
+                <li>所有資料使用 Apple 的 <strong>Core Data</strong> 框架儲存在您的裝置本地</li>
+                <li>資料儲存在 App 的沙盒環境中，其他 App 無法存取</li>
+                <li>目前資料<strong>僅儲存於您的裝置</strong>，不會同步至 iCloud</li>
+                <li>刪除 App 時，所有資料會一併被移除</li>
+            </ul>
+        </div>
+
+        <!-- 資料分享 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🚫</div>
+                <h2>5. 我們會分享您的資料嗎？</h2>
+            </div>
+            <div class="highlight-box danger">
+                <strong>絕對不會。</strong>
+            </div>
+            <ul>
+                <li>我們不會將您的資料分享、出售或提供給任何第三方</li>
+                <li>我們不會將資料用於廣告或行銷目的</li>
+                <li>我們沒有伺服器儲存您的個人資料</li>
+            </ul>
+        </div>
+
+        <!-- 您的權利 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">✅</div>
+                <h2>6. 您的權利</h2>
+            </div>
+            <ul>
+                <li><strong>存取權</strong>：您可以隨時在 App 中查看所有資料</li>
+                <li><strong>匯出權</strong>：您可以將資料匯出為 Excel 檔案</li>
+                <li><strong>刪除權</strong>：您可以在設定中清除所有資料，或刪除 App</li>
+                <li><strong>控制權</strong>：您完全掌控自己的資料</li>
+            </ul>
+        </div>
+
+        <!-- 兒童隱私 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">👨‍👩‍👧</div>
+                <h2>7. 兒童隱私</h2>
+            </div>
+            <p>DoremiAMS 不會主動收集 13 歲以下兒童的個人資料。由於我們不收集任何個人資料，DoremiAMS 適合所有年齡層使用。</p>
+        </div>
+
+        <!-- 政策更新 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">🔄</div>
+                <h2>8. 政策更新</h2>
+            </div>
+            <p>我們可能會不定期更新本隱私權政策。重大變更時，我們會在 App 中通知您。建議您定期查看本政策以了解最新資訊。</p>
+        </div>
+
+        <!-- 聯絡我們 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-icon">📧</div>
+                <h2>9. 聯絡我們</h2>
+            </div>
+            <p>如果您對本隱私權政策有任何疑問或建議，歡迎透過 App Store 的開發者聯絡方式與我們聯繫。</p>
+        </div>
+    </div>
+
+    <footer>
+        <p class="thanks">感謝您使用 <span class="app-name">DoremiAMS</span></p>
+        <p class="tagline">我們致力於保護您的隱私，讓您安心管理資產。</p>
+        <p class="copyright">© 2025 DoremiAMS. All rights reserved.</p>
+    </footer>
 </body>
 </html>
