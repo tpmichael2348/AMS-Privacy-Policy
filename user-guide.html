@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoremiAMS 快速上手指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            color: #1e293b;
+            line-height: 1.8;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #66B3FF 0%, #3373bf 50%, #1A3380 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* TOC Navigation */
+        .toc-container {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .toc {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .toc a {
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-radius: 20px;
+            background: #f1f5f9;
+            transition: all 0.3s;
+        }
+
+        .toc a:hover {
+            color: white;
+            background: #3373bf;
+        }
+
+        /* Go to Top Button */
+        .go-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3373bf 0%, #1A3380 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 16px rgba(51, 115, 191, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+
+        .go-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .go-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(51, 115, 191, 0.5);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Concept Section */
+        .concept-box {
+            background: linear-gradient(135deg, #1e3a5f 0%, #1A3380 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 32px rgba(26, 51, 128, 0.3);
+        }
+
+        .concept-box h2 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .concept-box p {
+            opacity: 0.95;
+            margin-bottom: 12px;
+        }
+
+        .concept-box .highlight {
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 16px;
+            border-left: 4px solid #66B3FF;
+        }
+
+        .concept-box .highlight strong {
+            color: #66B3FF;
+        }
+
+        /* Step Section */
+        .step-section {
+            margin-bottom: 32px;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #3373bf 0%, #1A3380 100%);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .step-card p {
+            color: #475569;
+            margin-bottom: 16px;
+        }
+
+        .step-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-card .note {
+            color: #64748b;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .step-card .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .step-card .feature-list li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            color: #475569;
+        }
+
+        .step-card .feature-list li::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            color: #3373bf;
+            font-weight: bold;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #3373bf;
+        }
+
+        .info-box h4 {
+            color: #1e40af;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .info-box p {
+            color: #1e3a8a;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Tips Box */
+        .tips-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+
+        .tips-box p {
+            color: #78350f;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .tips-box p::before {
+            content: "💡 ";
+        }
+
+        /* Feature List */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .feature-item .icon {
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+
+        .feature-item .name {
+            font-size: 0.9rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        /* Screenshot */
+        .screenshot {
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .screenshot img {
+            max-width: 280px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .screenshot-grid .screenshot {
+            margin: 0;
+        }
+
+        .screenshot-grid .screenshot img {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        /* Flow */
+        .flow-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .flow-item {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #3373bf;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-weight: 500;
+            color: #1e40af;
+        }
+
+        .flow-arrow {
+            color: #94a3b8;
+            font-size: 1.2rem;
+        }
+
+        /* Summary Cards */
+        .summary-section {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .summary-section h3 {
+            font-size: 1.1rem;
+            color: #3373bf;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .summary-list {
+            list-style: none;
+        }
+
+        .summary-list li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: #475569;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .summary-list li:last-child {
+            border-bottom: none;
+        }
+
+        .summary-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #3373bf;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header {
+                padding: 40px 16px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 24px 16px;
+            }
+
+            .concept-box,
+            .step-card,
+            .summary-section {
+                padding: 20px;
+            }
+
+            .flow-container {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>DoremiAMS 快速上手指南</h1>
+        <p>從關注投資報酬率，轉為關注總資產成長率</p>
+    </header>
+
+    <!-- TOC -->
+    <nav class="toc-container">
+        <div class="toc">
+            <a href="#concept">核心理念</a>
+            <a href="#step1">1. 盤點資產</a>
+            <a href="#step2">2. 投資部位</a>
+            <a href="#step3">3. 統計目標</a>
+            <a href="#step4">4. 定期記錄</a>
+            <a href="#step5">5. 多角度檢視</a>
+            <a href="#step6">6. 進階數據</a>
+            <a href="#step7">7. Widget</a>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <!-- 核心理念 -->
+        <section id="concept" class="concept-box">
+            <h2>💡 核心理念</h2>
+            <p>DoremiAMS 最主要的功能是<strong>管理資產</strong>，所以不要只是把股票等投資部位輸入進去。</p>
+            <p>核心的理念是要先盤點你的所有財產，包含現金、不動產、貸款等等，並且從關注投資報酬率，轉為關注<strong>總資產成長率</strong>。</p>
+            <p>總資產成長率當中會包含你的所有收入與支出，像是薪資、獎金、業外收入以及所有的花費，這才是最真實的成長。</p>
+            <p>最後建議用「月」當尺度來記錄每個月的資產變化，如果能夠進入到滾雪球的階段，相信在財富自由的路上會來得更踏實。</p>
+        </section>
+
+        <!-- Step 1: 盤點資產 -->
+        <section id="step1" class="step-section">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">盤點你的所有資產</div>
+            </div>
+            <div class="step-card">
+                <p>畫面中這幾種資產類別都蠻容易理解的：現金、銀行存款、房產、車輛、保險、貸款⋯⋯</p>
+
+                <p>只有一個「<strong>投資型貸款</strong>」需要特別說明——這類貸款因為是借來投資用的，會納入曝險比的計算。不論任何類型的貸款，只要資金是拿去投資，就可以把它歸類在這個類別。</p>
+
+                <p class="note">對了，設定功能裡也可以自己新增資產類別喔！</p>
+
+                <div class="screenshot">
+                    <img src="images/2-1-asset-list.png" alt="資產列表畫面">
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: 新增投資部位 -->
+        <section id="step2" class="step-section">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">新增投資部位</div>
+            </div>
+            <div class="step-card">
+                <p>新增完資產以後，接著就可以新增投資部位。在新增投資部位裡面可以先從增加「<strong>關注股票清單</strong>」開始，然後就可以「<strong>新增部位</strong>」。有賣出或者領股息就可以使用「<strong>新增實現損益</strong>」功能來記錄。</p>
+
+                <p>「新增部位」或者「新增實現損益」也都會自動累積或者扣除庫存，並且可以透過「<strong>更新匯率與股價</strong>」自動更新股價價格（這邊會是最近一天的收盤價，不是即時股價唷）。</p>
+
+                <p class="note">這時候資產頁面也會自己出現股票相關資產（連動投資組合那邊的資料）。</p>
+
+                <div class="screenshot-grid">
+                    <div class="screenshot">
+                        <img src="images/3-1-add-watchlist.png" alt="新增關注資產">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/3-1-add-position.png" alt="新增投資部位">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/3-1-portfolio.png" alt="投資組合畫面">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: 查看統計 -->
+        <section id="step3" class="step-section">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">查看統計與設定目標</div>
+            </div>
+            <div class="step-card">
+                <p>完成資產輸入以後就可以看到各種的統計數字與明細，並且可以自己設定<strong>財富自由目標</strong>，分成八個階段分別用不同的交通工具代表。而且每次打開 App 的時候都可以看到可愛的進度條動畫，讓你在追求財富自由的路上增加一些樂趣跟成就感哦！</p>
+
+                <div class="screenshot">
+                    <img src="images/3-3-overview.png" alt="總覽頁面">
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: 定期記錄 -->
+        <section id="step4" class="step-section">
+            <div class="step-header">
+                <div class="step-number">4</div>
+                <div class="step-title">定期記錄，追蹤趨勢</div>
+            </div>
+            <div class="step-card">
+                <p>接下來建議在投資部位有買進賣出的時候記錄一下（一個月記錄一次也可以）。同樣的，銀行資產等等也是一個月更新一次資訊，並且透過資產歷程的功能「<strong>新增記錄點</strong>」。</p>
+                <p>這樣就可以把當時的所有資訊都記錄下來，並且透過儀表板呈現整體趨勢！除了畫面中的圖表以外，還有累積投入趨勢、曝險比例趨勢、貸款與現金水位、負債比例趨勢⋯⋯應該是市面上最多圖表的資產管理 App 了吧！</p>
+
+                <div class="screenshot-grid">
+                    <div class="screenshot">
+                        <img src="images/4-1-asset-history.png" alt="資產歷程">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/4-1-dashboard-1.png" alt="儀表板-財富自由進度">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/4-1-dashboard-2.png" alt="儀表板-投資損益">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 5: 多角度統計 -->
+        <section id="step5" class="step-section">
+            <div class="step-header">
+                <div class="step-number">5</div>
+                <div class="step-title">多角度檢視投資組合</div>
+            </div>
+            <div class="step-card">
+                <p>投資組合的「資產分佈」區塊提供三種不同的檢視角度：<strong>圓餅圖</strong>、<strong>列表</strong>、<strong>群組</strong>。</p>
+
+                <ul class="feature-list">
+                    <li><strong>圓餅圖</strong>：可以呈現 Top 5 的佔比</li>
+                    <li><strong>列表</strong>：可以呈現所有的佔比</li>
+                </ul>
+
+                <p>以上這兩種都可以透過右上角的齒輪自行設定要納入統計的資產是哪些，提供了很高的靈活度。</p>
+
+                <p><strong>群組模式</strong>則是可以透過自訂群組的方式，把投資組合自行分類統計，讓你從不同維度了解自己的持股狀況。</p>
+
+                <div class="screenshot-grid">
+                    <div class="screenshot">
+                        <img src="images/5-1-pie-chart.png" alt="圓餅圖檢視">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/5-1-list-view.png" alt="列表檢視">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/5-1-group-view.png" alt="群組檢視">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 6: 進階數據 -->
+        <section id="step6" class="step-section">
+            <div class="step-header">
+                <div class="step-number">6</div>
+                <div class="step-title">進階數據：曝險比與再平衡</div>
+            </div>
+            <div class="step-card">
+                <p><strong>曝險比例</strong>可以幫助你了解目前的投資風險程度，App 會顯示詳細的計算公式與風險等級參考標準，讓你清楚知道數字是怎麼來的，也能更清楚掌握對於投資的水位是否過高或過低。</p>
+
+                <p><strong>再平衡組合</strong>則是進階的資產配置工具。你可以建立自己的目標配置比例，App 會自動計算目前的偏離程度，並提供「只加碼策略」或「完全平衡策略」的調整建議。</p>
+
+                <div class="screenshot-grid">
+                    <div class="screenshot">
+                        <img src="images/6-1-exposure-detail.png" alt="曝險比例計算明細">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/6-1-rebalance-list.png" alt="再平衡組合">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/6-1-rebalance-detail.png" alt="再平衡建議">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 7: Widget 小工具 -->
+        <section id="step7" class="step-section">
+            <div class="step-header">
+                <div class="step-number">7</div>
+                <div class="step-title">桌面小工具 Widget</div>
+            </div>
+            <div class="step-card">
+                <p>DoremiAMS 提供三種尺寸的桌面小工具，讓你不用打開 App 就能快速查看財富自由進度、曝險比、損益等關鍵指標。也支援<strong>鎖定畫面（Lock Screen）</strong>的小工具顯示！</p>
+
+                <p>長按桌面空白處，點選左上角的「+」按鈕，搜尋「DoremiAMS」即可加入小工具。</p>
+
+                <div class="screenshot-grid">
+                    <div class="screenshot">
+                        <img src="images/7-1-widget-small.png" alt="小尺寸 Widget">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/7-1-widget-medium.png" alt="中尺寸 Widget">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/7-1-widget-large.png" alt="大尺寸 Widget">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 DoremiAMS. All rights reserved.</p>
+        <p><a href="index.html">返回首頁</a></p>
+    </footer>
+
+    <!-- Go to Top Button -->
+    <button class="go-to-top" id="goToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Go to Top Button
+        const goToTopBtn = document.getElementById('goToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                goToTopBtn.classList.add('visible');
+            } else {
+                goToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const offset = 60; // TOC height
+                    const targetPosition = targetElement.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
