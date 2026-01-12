@@ -40,7 +40,7 @@
             margin: 0 auto;
         }
 
-        /* TOC Navigation */
+        /* TOC Navigation - Mobile (default) */
         .toc-container {
             background: white;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -74,6 +74,45 @@
         .toc a:hover {
             color: white;
             background: #3373bf;
+        }
+
+        /* TOC Navigation - Desktop (left sidebar) */
+        @media (min-width: 1100px) {
+            .toc-container {
+                position: fixed;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 200px;
+                background: white;
+                box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+                border-radius: 0 16px 16px 0;
+                padding: 20px 0;
+            }
+
+            .toc {
+                flex-direction: column;
+                padding: 0 16px;
+                overflow-x: visible;
+                gap: 6px;
+            }
+
+            .toc a {
+                padding: 10px 14px;
+                border-radius: 10px;
+                font-size: 0.82rem;
+                white-space: normal;
+                text-align: left;
+            }
+
+            .toc a:hover {
+                transform: translateX(4px);
+            }
+
+            .toc a.active {
+                color: white;
+                background: linear-gradient(135deg, #3373bf 0%, #1A3380 100%);
+            }
         }
 
         /* Go to Top Button */
@@ -445,7 +484,8 @@
             <a href="#step4">4. 定期記錄</a>
             <a href="#step5">5. 多角度檢視</a>
             <a href="#step6">6. 進階數據</a>
-            <a href="#step7">7. Widget</a>
+            <a href="#step7">7. 曝險比設定</a>
+            <a href="#step8">8. Widget</a>
         </div>
     </nav>
 
@@ -633,10 +673,41 @@
             </div>
         </section>
 
-        <!-- Step 7: Widget 小工具 -->
+        <!-- Step 7: 曝險比設定方式 -->
         <section id="step7" class="step-section">
             <div class="step-header">
                 <div class="step-number">7</div>
+                <div class="step-title">曝險比設定方式</div>
+            </div>
+            <div class="step-card">
+                <p>在新增投資部位時，除了輸入股票資訊，還可以設定「<strong>槓桿比例</strong>」，這會影響曝險比的計算。App 也會自動帶入該股票的 <strong>Beta 係數</strong>，讓你更清楚了解每檔股票的風險程度，投資人可以參考 Beta 係數或者自身認定該投資標的風險來設定其槓桿比例。（並非所有標的都有 Beta 值，但國際股市大部分都有提供）</p>
+
+                <h4 style="margin-top: 20px; margin-bottom: 12px; color: #1e293b;">📊 槓桿比例說明</h4>
+                <ul class="feature-list">
+                    <li><strong>0x = 不計入曝險</strong>：適合不想納入風險計算的部位（例如短債）</li>
+                    <li><strong>1x = 無槓桿（現股）</strong>：一般現股買進</li>
+                    <li><strong>2x = 2 倍槓桿</strong>：例如高波動標的或 2 倍槓桿 ETF</li>
+                    <li><strong>3x+ = 高風險槓桿</strong>：3 倍以上的高風險槓桿商品</li>
+                </ul>
+
+                <div class="screenshot-grid">
+                    <div class="screenshot">
+                        <img src="images/7-1-leverage-voo.png" alt="VOO 槓桿設定 - Beta 1.000 中等波動">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/7-1-leverage-shv.png" alt="SHV 槓桿設定 - Beta 0.010 極低波動">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/7-1-leverage-qld.png" alt="QLD 槓桿設定 - Beta 2.350 高波動">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 8: Widget 小工具 -->
+        <section id="step8" class="step-section">
+            <div class="step-header">
+                <div class="step-number">8</div>
                 <div class="step-title">桌面小工具 Widget</div>
             </div>
             <div class="step-card">
@@ -708,7 +779,7 @@
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
-                    const offset = 60; // TOC height
+                    const offset = 80;
                     const targetPosition = targetElement.offsetTop - offset;
                     window.scrollTo({
                         top: targetPosition,
@@ -717,6 +788,32 @@
                 }
             });
         });
+
+        // Highlight active TOC link on scroll (desktop)
+        const sections = document.querySelectorAll('section[id]');
+        const tocLinks = document.querySelectorAll('.toc a');
+
+        function updateActiveLink() {
+            const scrollPos = window.scrollY + 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    tocLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        updateActiveLink();
     </script>
 </body>
 </html>
