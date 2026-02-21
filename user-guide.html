@@ -486,6 +486,7 @@
             <a href="#step6">6. 進階數據</a>
             <a href="#step7">7. 曝險比設定</a>
             <a href="#step8">8. Widget</a>
+            <a href="#step9">9. 多帳號</a>
         </div>
     </nav>
 
@@ -542,9 +543,9 @@
                 <div class="step-title">新增投資部位</div>
             </div>
             <div class="step-card">
-                <p>新增完資產以後，接著就可以新增投資部位。在新增投資部位裡面可以先從增加「<strong>關注股票清單</strong>」開始，然後就可以「<strong>新增部位</strong>」。有賣出或者領股息就可以使用「<strong>新增實現損益</strong>」功能來記錄。</p>
+                <p>新增完資產以後，接著就可以新增投資部位。點選「<strong>投資部位</strong>」＋號按鈕後，就可以選擇不同的資產類別（股票、基金、加密貨幣等），再透過「<strong>搜尋股票</strong>」來找到你要的標的。搜尋功能支援台股、美股、港股、日股等多個市場，也可以從「<strong>現有庫存</strong>」快速選取已持有的標的來加碼買進。</p>
 
-                <p>「新增部位」或者「新增實現損益」也都會自動累積或者扣除庫存，並且可以透過「<strong>更新匯率與股價</strong>」自動更新股價價格（這邊會是最近一天的收盤價，不是即時股價唷）。</p>
+                <p>「<strong>新增投資部位</strong>」或者「<strong>新增實現損益</strong>」都會自動累積或扣除庫存，並且可以透過「<strong>更新匯率與股價</strong>」自動更新股價價格（這邊會是最近一天的收盤價，不是即時股價唷）。</p>
 
                 <p class="note">這時候資產頁面也會自己出現股票相關資產（連動投資組合那邊的資料）。</p>
 
@@ -552,13 +553,10 @@
 
                 <div class="screenshot-grid">
                     <div class="screenshot">
-                        <img src="images/3-1-add-watchlist.png" alt="新增關注資產">
+                        <img src="images/step2-add-position.png" alt="新增投資部位">
                     </div>
                     <div class="screenshot">
-                        <img src="images/3-1-add-position.png" alt="新增投資部位">
-                    </div>
-                    <div class="screenshot">
-                        <img src="images/3-1-portfolio.png" alt="投資組合畫面">
+                        <img src="images/step2-stock-picker.png" alt="選擇股票">
                     </div>
                 </div>
 
@@ -600,7 +598,9 @@
             </div>
             <div class="step-card">
                 <p>接下來建議在投資部位有買進賣出的時候記錄一下（一個月記錄一次也可以）。同樣的，銀行資產等等也是一個月更新一次資訊，並且透過資產歷程的功能「<strong>新增記錄點</strong>」。</p>
-                <p>這樣就可以把當時的所有資訊都記錄下來，並且透過儀表板呈現整體趨勢！除了畫面中的圖表以外，還有累積投入趨勢、曝險比例趨勢、貸款與現金水位、負債比例趨勢⋯⋯應該是市面上最多圖表的資產管理 App 了吧！</p>
+                <p>這樣就可以把當時的所有資訊都記錄下來，並且透過儀表板呈現整體趨勢！儀表板提供了豐富的圖表，包括財富自由進度、年度資產成長率、年度綜合損益金額與損益率、未實現損益趨勢、累積實現損益、年度實現報酬率、年度股息收入、累積投入趨勢、曝險比例趨勢、貸款與現金水位、負債比例趨勢等，隨著使用者的許願持續增加，目前已經多達 <strong>12 個圖表</strong>⋯⋯應該是市面上最多圖表的資產管理 App 了吧！</p>
+
+                <p>而且你還可以透過「<strong>儀表板設定</strong>」來自訂圖表的顯示與排序，拖曳調整順序、開關控制顯示，打造屬於你自己的專屬儀表板。</p>
 
                 <div class="screenshot-grid">
                     <div class="screenshot">
@@ -611,6 +611,18 @@
                     </div>
                     <div class="screenshot">
                         <img src="images/4-1-dashboard-2.png" alt="儀表板-投資損益">
+                    </div>
+                </div>
+
+                <div class="screenshot-grid" style="margin-top: 16px;">
+                    <div class="screenshot">
+                        <img src="images/step4-dashboard-charts-1.png" alt="儀表板-未實現損益與股息">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/step4-dashboard-charts-2.png" alt="儀表板-綜合損益金額與損益率">
+                    </div>
+                    <div class="screenshot">
+                        <img src="images/step4-dashboard-settings.png" alt="儀表板設定">
                     </div>
                 </div>
             </div>
@@ -724,6 +736,27 @@
                     </div>
                     <div class="screenshot">
                         <img src="images/7-1-widget-large.png" alt="大尺寸 Widget">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 9: 多帳號管理 -->
+        <section id="step9" class="step-section">
+            <div class="step-header">
+                <div class="step-number">9</div>
+                <div class="step-title">多帳號管理</div>
+            </div>
+            <div class="step-card">
+                <p>DoremiAMS 支援「<strong>多帳號</strong>」功能，讓你可以為不同的家庭成員或投資策略建立獨立帳號。每個帳號擁有完全獨立的資產資料庫，切換帳號時資料完全隔離，不會互相影響。</p>
+
+                <p>在設定頁面點選「<strong>帳號管理</strong>」即可新增、編輯或刪除帳號。每個帳號可以自訂名稱與圖示，方便辨識。帳號列表上方會顯示「<strong>全帳號財富自由進度</strong>」，將所有帳號的淨資產加總，讓你一目瞭然整體的財務狀況。</p>
+
+                <p>你也可以透過開關來決定哪些帳號要納入合計計算，靈活管理你的資產全貌。</p>
+
+                <div class="screenshot-grid">
+                    <div class="screenshot">
+                        <img src="images/step9-multi-account.png" alt="多帳號管理">
                     </div>
                 </div>
             </div>
